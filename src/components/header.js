@@ -20,8 +20,6 @@ const Header = () => {
         <header className='sticky top-0 z-30 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700'>
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
                 <div className='flex justify-between items-center h-16'>
-                    
-                    {/* Logo */}
                     <Link to="/" className='flex items-center space-x-2 group'>
                         <div className='w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200'>
                             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -29,11 +27,9 @@ const Header = () => {
                             </svg>
                         </div>
                         <span className='text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent'>
-                            ShopHub
+                            Shopping-Cart
                         </span>
                     </Link>
-
-                    {/* Navigation */}
                     <nav className='hidden md:flex items-center space-x-8'>
                         <Link to="/" className='text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors'>
                             Home
@@ -62,25 +58,17 @@ const Header = () => {
                             </svg>
                         </div>
                     </div>
-
-                    {/* Right Section */}
                     <div className='flex items-center space-x-4'>
-                        
-                        {/* Search Icon (Mobile) */}
                         <button className='lg:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'>
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
                         </button>
-
-                        {/* Wishlist */}
                         <button className='relative p-2 text-gray-600 dark:text-gray-300 hover:text-red-500 transition-colors'>
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                             </svg>
                         </button>
-
-                        {/* Cart */}
                         <button 
                             onClick={handleOpenTabCart}
                             className='relative p-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-xl transition-all duration-200 transform hover:scale-105 group'
@@ -94,8 +82,6 @@ const Header = () => {
                                 </span>
                             )}
                         </button>
-
-                        {/* User Menu */}
                         <div className='relative'>
                             <button className='w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white font-medium text-sm hover:scale-110 transition-transform'>
                                 U
