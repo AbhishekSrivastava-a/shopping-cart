@@ -7,7 +7,7 @@ const CartTab = () => {
 
   return (
     <>
-      {/* Backdrop/Overlay - only show when cart is open */}
+      {/* only show when cart is open */}
       {statusTab && (
         <div 
           className="fixed inset-0 bg-black bg-opacity-50 z-40"
@@ -15,7 +15,6 @@ const CartTab = () => {
         ></div>
       )}
       
-      {/* Cart Sidebar - Increased width to w-[500px] for more space */}
       <div className={`fixed right-0 top-0 w-full sm:w-96 md:w-[450px] lg:w-[500px] h-full bg-white dark:bg-gray-900 shadow-xl z-50 p-6 overflow-y-auto transform transition-transform duration-300 ease-in-out ${
         statusTab ? 'translate-x-0' : 'translate-x-full'
       }`}>
