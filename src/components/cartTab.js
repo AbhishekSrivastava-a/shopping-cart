@@ -1,9 +1,56 @@
 import React from 'react';
 import CartItem from './cartItem';
 import { useCart } from '../context/CartContext';
+import { products } from '../products'; // Import products data to get actual prices
 
 const CartTab = () => {
   const { items: carts, statusTab, toggleStatusTab } = useCart();
+
+  // Function to calculate totals using ACTUAL product prices
+  const calculateSubtotal = () => {
+  console.log('cart calculations');
+  console.log(' Cart items:', carts);
+  console.log('Products :', products);
+  console.log('Products count:', products.length);
+  
+  let debugTotal = 0;
+  
+  const result = carts.reduce((total, cartItem, index) => {
+    console.log(`\n--- Processing Cart Item ${index + 1} ---`);
+    console.log('Cart item data:', cartItem);
+    console.log('Looking for productId:', cartItem.productId);
+    console.log('Quantity:', cartItem.quantity);
+    
+    // Find the matching product by ID
+    const product = products.find(p => p.id === cartItem.productId);
+    console.log(' Found product:', product);
+    
+    if (!product) {
+      console.error(` Product with ID ${cartItem.productId} not found!`);
+      console.log('Available product IDs:', products.map(p => p.id));
+      return total;
+    }
+    
+    const price = product.price;
+    const itemTotal = price * cartItem.quantity;
+    debugTotal += itemTotal;
+    
+    console.log(` Product price: $${price}`);
+    console.log(` Quantity: ${cartItem.quantity}`);
+    console.log(` Item total: $${itemTotal}`);
+    console.log(` Running total: $${total + itemTotal}`);
+    
+    return total + itemTotal;
+  }, 0);
+  
+  console.log('subtotal:', result);
+  console.log(' total check:', debugTotal);
+  console.log(' result:', result.toFixed(2));
+  
+  return result.toFixed(2);
+};
+
+  const totalItems = carts.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <>
@@ -76,16 +123,13 @@ const CartTab = () => {
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
                     <span>Total Items:</span>
-                    <span className="font-medium">{carts.reduce((total, item) => total + item.quantity, 0)} items</span>
+                    <span className="font-medium">{totalItems} items</span>
                   </div>
                   
                   <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
                     <span>Subtotal:</span>
                     <span className="font-medium">
-                      ${carts.reduce((total, item) => {
-                        // This is a placeholder calculation
-                        return total + (item.quantity * 25.99); // Replace with actual price
-                      }, 0).toFixed(2)}
+                      ${calculateSubtotal()}
                     </span>
                   </div>
                   
@@ -98,14 +142,14 @@ const CartTab = () => {
                     <div className="flex justify-between items-center">
                       <span className="text-lg font-bold text-gray-900 dark:text-white">Total:</span>
                       <span className="text-xl font-bold text-gray-900 dark:text-white">
-                        ${carts.reduce((total, item) => {
-                          return total + (item.quantity * 25.99); // Replace with actual price
-                        }, 0).toFixed(2)}
+                        ${calculateSubtotal()}
                       </span>
                     </div>
                   </div>
                 </div>
               </div>
+              
+              {/* Action Buttons */}
               <div className="space-y-3">
                 <button className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center space-x-2 shadow-lg">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
