@@ -10,7 +10,6 @@ const CartDrawer = ({ open, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden">
-      {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-black bg-opacity-50 transition-opacity"
         onClick={onClose}
@@ -20,7 +19,7 @@ const CartDrawer = ({ open, onClose }) => {
       <div className="absolute right-0 top-0 h-full w-full max-w-md">
         <div className="flex h-full flex-col bg-white dark:bg-gray-900 shadow-xl transform transition-transform">
           
-          {/* Header */}
+          {/* Header Items */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center space-x-2">
               <svg className="w-6 h-6 text-gray-700 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -40,7 +39,7 @@ const CartDrawer = ({ open, onClose }) => {
             </button>
           </div>
 
-          {/* Content */}
+          {/* Cart Content */}
           <div className="flex-1 overflow-y-auto px-6 py-4">
             {cart.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-64 text-center">
@@ -70,7 +69,7 @@ const CartDrawer = ({ open, onClose }) => {
                       </button>
                     </div>
                     
-                    {/* Quantity Controls */}
+                    {/* Quantity calculation and updatations */}
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3 bg-white dark:bg-gray-700 rounded-md p-1">
                         <button 
@@ -106,7 +105,7 @@ const CartDrawer = ({ open, onClose }) => {
             )}
           </div>
 
-          {/* Footer */}
+          {/* Cart Footer */}
           {cart.length > 0 && (
             <div className="border-t border-gray-200 dark:border-gray-700 px-6 py-4 space-y-4">
               <div className="flex justify-between items-center">
